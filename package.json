@@ -1,0 +1,12 @@
+{
+  "name": "slack-set-ooo",
+  "version": "1.0.0",
+  "description": "an slack app to set OOO profile",
+  "main": "index.js",
+  "author": "Njeri Ngigi",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "@slack/web-api": "^5.11.0"
+  }
+}
