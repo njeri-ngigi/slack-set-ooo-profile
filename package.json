@@ -6,7 +6,18 @@
   "author": "Njeri Ngigi",
   "license": "MIT",
   "private": false,
+  "scripts": {
+    "start": "echo not yeeet!",
+    "start:dev": "nodemon src/index.js"
+  },
   "dependencies": {
-    "@slack/web-api": "^5.11.0"
+    "@slack/web-api": "^5.11.0",
+    "axios": "^0.20.0",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
   }
 }
