@@ -8,6 +8,7 @@ const { sliceDate } = require('../shared/common');
 // TODO: remove unnecessary scopes and permissions
 // TODO: test this
 // TODO: publish this in the store
+// TODO: remove settimeout
 
 const web = new WebClient(token);
 const webForBot = new WebClient(botToken);
