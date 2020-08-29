@@ -1,21 +1,29 @@
 const { WebClient } = require('@slack/web-api');
-const { token, botToken } = require('../env');
+const { userToken, botToken } = require('../env');
 const { sliceDate } = require('../shared/common');
+const Sentry = require('../bugLogger/sentry');
+const { UserException } = require('../bugLogger/exceptions');
 
-// TODO: Add proper error handling
-// TODO: Add proper bug reporting (busnag?)
 // TODO: Host this
-// TODO: remove unnecessary scopes and permissions
 // TODO: test this
 // TODO: publish this in the store
-// TODO: remove settimeout
+// TODO: Add readme
+// TODO: Add eslint rules
+// TODO: switch to typescript
+// TODO: document this
 
-const web = new WebClient(token);
+const web = new WebClient(userToken);
 const webForBot = new WebClient(botToken);
+let timeoutID;
 
 const getUserProfile = async () => {
-  const { profile } = await web.users.profile.get();
-  return profile.display_name;
+  try {
+    const { profile } = await web.users.profile.get();
+    return profile.display_name;
+  } catch (error) {
+    Sentry.captureException(error); 
+    throw new UserException('Failed to get slack user profile', error);
+  }
 }
 
 const getDate = (oooEndDate) => {
@@ -31,6 +39,8 @@ const getDate = (oooEndDate) => {
 
 const removeOOO = async (slackBlocks) => {
   try {
+    clearTimeout(timeoutID);
+
     let displayName = await getUserProfile();
 
     const oooIndex = displayName.indexOf('OOO');
@@ -56,7 +66,7 @@ const removeOOO = async (slackBlocks) => {
       { ...slackBlocks.plainText('Welcome back! You are *now active*. Have a great day :sunglasses:') },
     ]
   } catch (error) {
-    console.error(error);
+    Sentry.captureException(error, 'removeOOO method');
     return [
       { ...slackBlocks.plainText('*Something went terribly wrong. Please try again :pensive: *') }
     ]
@@ -98,7 +108,7 @@ const addOOO = async (payload, slackBlocks) => {
       num_minutes: dndMinutes
     });
 
-    setTimeout(async () => {
+    timeoutID = setTimeout(async () => {
       const blocks = await removeOOO(slackBlocks);
       blocks.push({ "type": "divider" });
 
@@ -110,6 +120,7 @@ const addOOO = async (payload, slackBlocks) => {
           blocks
         });
       } catch(error) {
+        Sentry.captureException(error, 'settimeout to remove OOO');
         console.log(error);
       }
     }, dndMilliSeconds);
@@ -119,7 +130,7 @@ const addOOO = async (payload, slackBlocks) => {
       { ...slackBlocks.plainText('Have a restful break :sleeping:') },
     ]
   } catch (error) {
-    console.error(error);
+    Sentry.captureException(error, 'addOOO method');
     return [
       { ...slackBlocks.plainText('*Something went terribly wrong. Please try again :pensive: *') }
     ]
