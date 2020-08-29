@@ -1,4 +1,4 @@
-const Sentry = require("@sentry/node");
+const Sentry = require('@sentry/node');
 const { dsn } = require('../env');
 
 Sentry.init({ dsn });
