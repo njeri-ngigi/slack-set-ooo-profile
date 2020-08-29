@@ -1,6 +1,7 @@
 const axios = require('axios');
+const Sentry = require('./bugLogger/sentry');
 const { addOOO, removeOOO, getUserProfile } = require('./slack/slack');
-const SlackBlocks = require('./slack/slackBlocks')
+const SlackBlocks = require('./slack/slackBlocks');
 
 const helloOOOProfile = async (req, res) => {
   const slackBlocks = new SlackBlocks();
@@ -21,7 +22,11 @@ const helloOOOProfile = async (req, res) => {
 
     res.send({ blocks });
   } catch (error) {
-    console.error(error)
+    Sentry.captureException(error, 'helloOOOProfile method');
+    const errorBlocks = [
+      { ...slackBlocks.plainText('Something went *terribly wrong*. Please try again :pensive:.') }
+    ];
+    res.send({ blocks: errorBlocks });
   }
 }
 
@@ -50,13 +55,15 @@ const setOOOProfile = async (req, res) => {
       ];
   }
 
-  blocks.push({ "type": "divider" })
+  blocks.push({ "type": "divider" });
 
   axios
     .post(responseUrl, { blocks })
-    .catch((error) => console.error(error))
+    .catch((error) => {
+      console.error(error)
+      Sentry.captureException(error, 'setOOOProfile method - axios failed to respond to slack url');
+    })
 }
-
 
 module.exports = {
   helloOOOProfile,
