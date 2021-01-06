@@ -7,9 +7,8 @@ const { UserException } = require('../bugLogger/exceptions');
 // TODO: Host this
 // TODO: test this
 // TODO: publish this in the store
-// TODO: Add readme
-// TODO: switch to typescript
 // TODO: document this
+// TODO: switch to typescript
 
 const web = new WebClient(userToken);
 const webForBot = new WebClient(botToken);
