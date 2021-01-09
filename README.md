@@ -35,5 +35,5 @@ Make requests to https://slack-ooo-gcp.ew.r.appspot.com
 ## Testing
 (to be added)
 
-## Documentation
-(to be added)
+## Installation
+To install the app on your slack workspace visit https://njeri-ngigi.github.io/slack-set-ooo-profile/
