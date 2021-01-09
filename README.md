@@ -30,7 +30,7 @@ App hosted on Google Cloud Platform
 Make requests to https://slack-ooo-gcp.ew.r.appspot.com
 
 ## Demo
-https://user-images.githubusercontent.com/28973383/104105534-7deb5680-52b7-11eb-9241-e1fd094503f8.mp4
+![screen-recorder-sat-jan-09-2021-19-55-36 (online-video-cutter com) (2)](https://user-images.githubusercontent.com/28973383/104105870-02d76f80-52ba-11eb-9453-51c48edea99e.gif)
 
 ## Testing
 (to be added)
