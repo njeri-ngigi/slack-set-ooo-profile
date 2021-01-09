@@ -4,34 +4,13 @@ You can use the [editor on GitHub](https://github.com/njeri-ngigi/slack-set-ooo-
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-### Markdown
+### Slack OOO
+This app changes a user profile to show a user is out of office by adding an OOO to their name, turning off notifications and adding a status to show when the user will be back from a work break. The profile is reset after the time period selected by the user elapses. The user can cancel the OOO period whenever using the same slash command.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### Installation
+[Click to add app to your slack workspace](https://slack.com/oauth/v2/authorize?client_id=521383078068.1307261959974&scope=chat:write,commands&user_scope=chat:write,dnd:read,dnd:write,users.profile:read,users.profile:write,users:write)
 
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/njeri-ngigi/slack-set-ooo-profile/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
 
 ### Support or Contact
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+Having trouble with the OOO app? Reach out to me directly via [email](mailto:njery.ngigi@gmail.com) 
