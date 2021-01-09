@@ -1,10 +1,4 @@
-## Welcome to GitHub Pages
-
-You can use the [editor on GitHub](https://github.com/njeri-ngigi/slack-set-ooo-profile/edit/develop/docs/index.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Slack OOO
+## Welcome to Slack OOO
 This app changes a user profile to show a user is out of office by adding an OOO to their name, turning off notifications and adding a status to show when the user will be back from a work break. The profile is reset after the time period selected by the user elapses. The user can cancel the OOO period whenever using the same slash command.
 
 ### Installation
