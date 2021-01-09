@@ -4,10 +4,7 @@ const { sliceDate } = require('../shared/common');
 const Sentry = require('../bugLogger/sentry');
 const { UserException } = require('../bugLogger/exceptions');
 
-// TODO: Host this
 // TODO: test this
-// TODO: publish this in the store
-// TODO: document this
 // TODO: switch to typescript
 
 const web = new WebClient(userToken);

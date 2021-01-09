@@ -7,7 +7,7 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "start": "echo not yeeet!",
+    "start": "node src/index.js",
     "start:dev": "nodemon src/index.js"
   },
   "dependencies": {
