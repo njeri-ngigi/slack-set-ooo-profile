@@ -33,7 +33,7 @@ class SlackBlocks {
     style,
   });
 
-  actions = (buttonAttributes) => {
+  actions = (buttonAttributes, btnId) => {
     // shape of buttonAttributes: [[text, style], [text, style]]
     const elements = [];
 
@@ -43,7 +43,7 @@ class SlackBlocks {
 
     return {
       type: 'actions',
-      block_id: 'block-1',
+      block_id: btnId,
       elements,
     };
   }
@@ -54,6 +54,41 @@ class SlackBlocks {
       type: 'mrkdwn',
       text,
     },
+  })
+
+  formModal = () => ({
+    type: 'modal',
+    title: {
+      type: 'plain_text',
+      text: 'What\'s your OOO message?',
+    },
+    submit: {
+      type: 'plain_text',
+      text: 'Submit',
+    },
+    close: {
+      type: 'plain_text',
+      text: 'Use defaults',
+    },
+    blocks: [
+      { ...this.datePicker() },
+      {
+        label: {
+          type: 'plain_text',
+          text: 'Message',
+        },
+        type: 'input',
+        optional: true,
+        element: {
+          type: 'plain_text_input',
+          action_id: 'ooo_message',
+          placeholder: {
+            type: 'plain_text',
+            text: 'Leave an OOO message for anyone who tries to reach out',
+          },
+        },
+      },
+    ],
   })
 }
 

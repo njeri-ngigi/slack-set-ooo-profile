@@ -8,7 +8,7 @@ const { UserException } = require('../bugLogger/exceptions');
 // TODO: switch to typescript
 
 const web = new WebClient(userToken);
-const webForBot = new WebClient(botToken);
+// const webForBot = new WebClient(botToken);
 let timeoutID;
 
 const getUserProfile = async () => {
@@ -83,47 +83,52 @@ const addOOO = async (payload, slackBlocks) => {
       ];
     }
 
-    const displayName = await getUserProfile();
-    const newDisplayName = `${displayName} OOO`;
+    // const displayName = await getUserProfile();
+    // const newDisplayName = `${displayName} OOO`;
 
-    await web.users.profile.set({
-      profile: {
-        display_name: newDisplayName,
-        status_text: `OOO till ${dateString}`,
-        status_emoji: ':x:',
-        status_expiration: timeInMilliseconds / 1000,
-      },
-    });
+    // await web.users.profile.set({
+    //   profile: {
+    //     display_name: newDisplayName,
+    //     status_text: `OOO till ${dateString}`,
+    //     status_emoji: ':x:',
+    //     status_expiration: timeInMilliseconds / 1000,
+    //   },
+    // });
 
-    await web.users.setPresence({
-      presence: 'away',
-    });
+    // await web.users.setPresence({
+    //   presence: 'away',
+    // });
 
-    await web.dnd.setSnooze({
-      num_minutes: dndMinutes,
-    });
+    // await web.dnd.setSnooze({
+    //   num_minutes: dndMinutes,
+    // });
 
-    timeoutID = setTimeout(async () => {
-      const blocks = await removeOOO(slackBlocks);
-      blocks.push({ type: 'divider' });
+    // timeoutID = setTimeout(async () => {
+    //   const blocks = await removeOOO(slackBlocks);
+    //   blocks.push({ type: 'divider' });
 
-      try {
-        // post message as bot user
-        await webForBot.chat.postMessage({
-          channel: 'UFBD46Y3V',
-          text: 'Welcome Back!',
-          blocks,
-        });
-      } catch (error) {
-        Sentry.captureException(error, 'settimeout to remove OOO');
-        console.log(error);
-      }
-    }, dndMilliSeconds);
+    //   try {
+    //     // post message as bot user
+    //     await webForBot.chat.postMessage({
+    //       channel: 'UFBD46Y3V',
+    //       text: 'Welcome Back!',
+    //       blocks,
+    //     });
+    //   } catch (error) {
+    //     Sentry.captureException(error, 'settimeout to remove OOO');
+    //     console.log(error);
+    //   }
+    // }, dndMilliSeconds);
 
-    return [
-      { ...slackBlocks.plainText(`You are now OOO. Your profile will be *_automatically reset on ${dateString} at 00:00_*.`) },
-      { ...slackBlocks.plainText('Have a restful break :sleeping:') },
-    ];
+    // print('>>>>>>>>>>here');
+    // return [
+    //   { ...slackBlocks.plainText(`You are now OOO. Your profile will be *_automatically reset on ${dateString} at 00:00_*.`) },
+    //   { ...slackBlocks.plainText('Have a restful break :sleeping:') },
+    // ];
+
+    // return [
+    //   { ...slackBlocks.formModal() },
+    // ];
   } catch (error) {
     Sentry.captureException(error, 'addOOO method');
     return [
