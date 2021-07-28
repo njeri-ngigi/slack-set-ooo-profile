@@ -8,7 +8,7 @@ class SlackBlocks {
 
   datePicker = () => ({
     type: 'section',
-    block_id: 'section-1',
+    block_id: 'datepicker-ooo',
     text: {
       type: 'mrkdwn',
       text: 'When does your OOO end?',
@@ -54,41 +54,6 @@ class SlackBlocks {
       type: 'mrkdwn',
       text,
     },
-  })
-
-  formModal = () => ({
-    type: 'modal',
-    title: {
-      type: 'plain_text',
-      text: 'What\'s your OOO message?',
-    },
-    submit: {
-      type: 'plain_text',
-      text: 'Submit',
-    },
-    close: {
-      type: 'plain_text',
-      text: 'Use defaults',
-    },
-    blocks: [
-      { ...this.datePicker() },
-      {
-        label: {
-          type: 'plain_text',
-          text: 'Message',
-        },
-        type: 'input',
-        optional: true,
-        element: {
-          type: 'plain_text_input',
-          action_id: 'ooo_message',
-          placeholder: {
-            type: 'plain_text',
-            text: 'Leave an OOO message for anyone who tries to reach out',
-          },
-        },
-      },
-    ],
   })
 }
 
