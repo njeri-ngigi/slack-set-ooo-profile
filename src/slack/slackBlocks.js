@@ -8,7 +8,7 @@ class SlackBlocks {
 
   datePicker = () => ({
     type: 'section',
-    block_id: 'section-1',
+    block_id: 'datepicker-ooo',
     text: {
       type: 'mrkdwn',
       text: 'When does your OOO end?',
@@ -33,7 +33,7 @@ class SlackBlocks {
     style,
   });
 
-  actions = (buttonAttributes) => {
+  actions = (buttonAttributes, btnId) => {
     // shape of buttonAttributes: [[text, style], [text, style]]
     const elements = [];
 
@@ -43,7 +43,7 @@ class SlackBlocks {
 
     return {
       type: 'actions',
-      block_id: 'block-1',
+      block_id: btnId,
       elements,
     };
   }
