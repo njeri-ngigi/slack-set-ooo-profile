@@ -6,7 +6,23 @@
   "author": "Njeri Ngigi",
   "license": "MIT",
   "private": false,
+  "scripts": {
+    "start": "node src/index.js",
+    "start:dev": "nodemon src/index.js"
+  },
   "dependencies": {
-    "@slack/web-api": "^5.11.0"
+    "@sentry/node": "^5.22.3",
+    "@slack/web-api": "^5.11.0",
+    "axios": "^0.20.0",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.7.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "nodemon": "^2.0.4"
   }
 }
